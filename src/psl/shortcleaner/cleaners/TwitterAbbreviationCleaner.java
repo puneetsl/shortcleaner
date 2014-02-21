@@ -11,12 +11,12 @@ import psl.shortcleaner.exceptions.NoTextException;
  * @author puneet
  * 
  */
-public class SMSLingoCleaner implements ShortCleaner {
+public class TwitterAbbreviationCleaner implements ShortCleaner {
 
 	private String dirtyText=null;
 	private String cleanRawText=null; 
 	private String cleanTaggedText=null;
-	public SMSLingoCleaner() {
+	public TwitterAbbreviationCleaner() {
 		dirtyText = "";	
 	}
 	public void setText(String shortText) {

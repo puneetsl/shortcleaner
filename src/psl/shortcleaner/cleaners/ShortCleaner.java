@@ -21,18 +21,17 @@ public interface ShortCleaner {
     
 	/**   
      * Returns cleaned text in plain format
-     * for e.g. "LOL this is awesome" would simple be returned as 
+     * for e.g. "LOL this is awesome" would be returned as 
      * "Laughing out loud this is awesome"
      * 
      * @return  cleaned text as <code>String</code>
-	 * @throws Exception 
      */
 	public String getRawCleanText();
 	
 	/**   
      * Returns cleaned text in tagged format
-     * for e.g. "LOL this is awesome" would simple be returned as 
-     * "<smslingo baseText="LOL">Laughing out loud</smslingo> this is awesome"
+     * for e.g. "LOL this is awesome" would be returned as 
+     * "&lt;SMSLingoCleaner baseText="LOL"&gt;Laughing out loud &lt;/SMSLingoCleaner&gt; this is awesome"
      * 
      * @return  cleaned text as <code>String</code>
      */
