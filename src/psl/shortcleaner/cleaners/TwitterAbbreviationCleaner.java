@@ -33,7 +33,7 @@ public class TwitterAbbreviationCleaner implements ShortCleaner {
 	}
 
 	
-	public String getTaggedText() {
+	public String getTaggedCleanText() {
 		if(dirtyText == null || dirtyText.equals(""))
 		{			
 				throw new NoTextException();

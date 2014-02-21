@@ -35,7 +35,7 @@ public interface ShortCleaner {
      * 
      * @return  cleaned text as <code>String</code>
      */
-	public String getTaggedText();
+	public String getTaggedCleanText();
 	/*
 	 * TODO add JSON support for returning tagged 
 	 */

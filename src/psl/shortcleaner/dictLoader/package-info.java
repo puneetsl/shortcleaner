@@ -1,6 +1,7 @@
 /**
- * All classes must follow singleton pattern or must provide loaded dictionaries.
- * Dictionaries must be loaded only once
+ * Dictionaries must be loaded only once, in the start of 
+ * the program(or when called). 
+ * Dictionary must return Dictionary value of a particular text
  */
 /**
  * @author puneet
