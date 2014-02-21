@@ -47,7 +47,7 @@ public class TwitterAbbreviationDictionary implements Dictionary {
 			String dictionaryPath = prop.getProperty(this.getClass().getSimpleName());
 			loadDictionary(dictionaryPath);
 		}
-		String dictValue = twitterDictonary.getDictionaryValue(text);
+		String dictValue = twitterDictonary.getDictionaryValue(text.toLowerCase());
 		if(dictValue ==null)
 			return text;
 		return dictValue;

@@ -4,6 +4,6 @@ public class SimpleTokenizer {
 
 	public static String[] tokenize(String text)
 	{
-		return text.split(text, ' ');
+		return text.split(" ");
 	}
 }

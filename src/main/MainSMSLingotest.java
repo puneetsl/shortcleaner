@@ -1,14 +1,19 @@
 package main;
 
+import psl.shortcleaner.utils.StringUtils;
+
 import psl.shortcleaner.dictLoader.TwitterAbbreviationDictionary;
+import psl.shortcleaner.tokenizer.SimpleTokenizer;
 
 
 public class MainSMSLingotest {
 	public static void main(String[] args){
 		TwitterAbbreviationDictionary tad = new TwitterAbbreviationDictionary();
-		System.out.println(tad.getDictionaryValue("lmao"));
-		System.out.println(tad.getDictionaryValue("wtf"));
-		System.out.println(tad.getDictionaryValue("fts"));
-		System.out.println(tad.getDictionaryValue("lmao"));
+		String a = "Lol omg this is so funny";
+		String b[] = SimpleTokenizer.tokenize(a);
+		for (int i=0;i<b.length;i++) {
+			b[i]=tad.getDictionaryValue(b[i]);
+		}
+		System.out.println(StringUtils.join(b," "));
 	}
 }
