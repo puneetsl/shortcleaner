@@ -1,5 +1,6 @@
 package psl.shortcleaner.cleaners;
 
+
 public interface ShortCleaner {
     /**
      * setText would be used to set the dirty text which 
@@ -14,10 +15,9 @@ public interface ShortCleaner {
      * cleaners
      *
      * @param   dirty text as <code>string</code>
-     * @return  after initial checking returns <code>boolean</code>, 
-     * if the text is processable
+     * @return  void
      */
-	public boolean setText(String shortText);
+	public void setText(String shortText);
     
 	/**   
      * Returns cleaned text in plain format
@@ -25,6 +25,7 @@ public interface ShortCleaner {
      * "Laughing out loud this is awesome"
      * 
      * @return  cleaned text as <code>String</code>
+	 * @throws Exception 
      */
 	public String getRawCleanText();
 	
