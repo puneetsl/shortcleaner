@@ -1,6 +1,6 @@
 /**
  * Package to include different types of cleaners.
- * There would be an shortCleaner.java interface which every cleaner code should use 
+ * There would be an ShortCleaner.java interface which every cleaner code should use 
  * 
  */
 /**
