@@ -5,7 +5,6 @@ import psl.shortcleaner.utils.StringUtils;
 import psl.shortcleaner.dictLoader.TwitterAbbreviationDictionary;
 import psl.shortcleaner.tokenizer.SimpleTokenizer;
 /**
- * ajhkajhakjh
  * @author pludu
  *
  */
