@@ -5,11 +5,10 @@ import psl.shortcleaner.utils.StringUtils;
 import psl.shortcleaner.dictLoader.TwitterAbbreviationDictionary;
 import psl.shortcleaner.tokenizer.SimpleTokenizer;
 /**
- * test
+ * ajhkajhakjh
  * @author pludu
  *
  */
-
 public class MainSMSLingotest {
 	public static void main(String[] args){
 		TwitterAbbreviationDictionary tad = new TwitterAbbreviationDictionary();
