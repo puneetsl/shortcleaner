@@ -9,3 +9,6 @@ Java library to clean short texts used in Twitter and SMS
 ## How to use ##
 
 * Coming soon
+
+## Version ##
+0.1
