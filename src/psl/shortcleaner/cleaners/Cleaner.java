@@ -3,6 +3,7 @@ package psl.shortcleaner.cleaners;
 
 public interface Cleaner {
     /**
+     * 
      * setText would be used to set the dirty text which 
      * would get cleaned the classes which would implement 
      * this interface.<p>
