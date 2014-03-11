@@ -13,6 +13,6 @@ public class MainSMSLingotest {
 		for (int i=0;i<b.length;i++) {
 			b[i]=tad.getDictionaryValue(b[i]);
 		}
-		System.out.println(StringUtils.join(b," "));
+		System.out.println(StringUtils.join(b," "));//TODO More 
 	}
 }
