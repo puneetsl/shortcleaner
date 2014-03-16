@@ -13,7 +13,7 @@ public class MainLingotest {
 		 */
 		TwitterAbbreviationDictionary tad = new TwitterAbbreviationDictionary();
 		SpellCheckDictionary scd = new SpellCheckDictionary();
-		String a = "Lol omg thsi is so seyx funy lmao wud be amezing";
+		String a = "Lol omg ths is so seyxy funy lmao wud be amezing";
 		String b[] = SimpleTokenizer.tokenize(a);
 		for (int i=0;i<b.length;i++) {
 			b[i]=tad.getDictionaryValue(b[i]);

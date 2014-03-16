@@ -1,5 +1,7 @@
 package psl.shortcleaner.dictLoader;
 
+import info.puneetsingh.fsm.TextBrew;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.zip.ZipFile;
@@ -17,7 +19,7 @@ public class SpellCheckDictionary implements Dictionary{
 	private void loadSpellCheckDictionary()
 	{
 		try {
-			dict = new OpenOfficeSpellDictionary(new ZipFile("./Dictionaries/en_us.oxt"));
+			dict = new OpenOfficeSpellDictionary(new ZipFile("Dictionaries/en_us.oxt"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -37,6 +39,8 @@ public class SpellCheckDictionary implements Dictionary{
 				int i=0;
 				for (String sug : suggestions) {
 					double tempCmp = QGram.compare(text, sug);
+					double brewCmp = TextBrew.compareAndGiveBestScore(text, sug);
+					tempCmp =tempCmp*0.8+brewCmp*0.2;//giving weights (8:2)
 					if(max<tempCmp)
 					{
 						max = tempCmp;
