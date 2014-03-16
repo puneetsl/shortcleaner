@@ -23,16 +23,31 @@ public class QGram {
 
 		Set<String> q1 = qgrams(s1);
 		Set<String> q2 = qgrams(s2);
-
+		
 		if (q1.isEmpty() || q2.isEmpty())
+		{
 			return 0.0; // division will fail
-
+		}
+		
+		
 		int common = 0;
 		for (String gram : q1)
 			if (q2.contains(gram))
 				common++;
-
-		return overlap(common, q1, q2);
+		double retValue = overlap(common, q1, q2);
+		if(q1.size()==q2.size() && common != q1.size())
+		{
+			/*
+			 * Giving unfair advantage(150%) to strings having same size
+			 * In this case q-gram may have values greater than 1 but rarely
+			 */
+			return (1.5f)*retValue;
+		}
+		else
+		{
+			return retValue;
+		}
+		 
 	}
 
 	/**
@@ -40,11 +55,9 @@ public class QGram {
 	 */
 	private static Set<String> qgrams(String s) {
 		int q = 2;
-
 		Set<String> grams = new HashSet<String>();
 		for (int ix = 0; ix < s.length() - q + 1; ix++)
 			grams.add(s.substring(ix, ix + q));
-
 		return grams;
 	}
 
