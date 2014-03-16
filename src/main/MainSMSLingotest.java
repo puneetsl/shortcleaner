@@ -1,7 +1,7 @@
 package main;
 
-import psl.shortcleaner.utils.StringUtils;
 
+import psl.shortcleaner.utils.StringUtils;
 import psl.shortcleaner.dictLoader.TwitterAbbreviationDictionary;
 import psl.shortcleaner.tokenizer.SimpleTokenizer;
 
@@ -14,5 +14,6 @@ public class MainSMSLingotest {
 			b[i]=tad.getDictionaryValue(b[i]);
 		}
 		System.out.println(StringUtils.join(b," "));
+		
 	}
 }
