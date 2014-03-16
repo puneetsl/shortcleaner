@@ -8,6 +8,9 @@ import psl.shortcleaner.tokenizer.SimpleTokenizer;
 
 public class MainLingotest {
 	public static void main(String[] args){
+		/**
+		 * TODO: Implement Controller 
+		 */
 		TwitterAbbreviationDictionary tad = new TwitterAbbreviationDictionary();
 		SpellCheckDictionary scd = new SpellCheckDictionary();
 		String a = "Lol omg thsi is so seyx funy lmao wud be amezing";
