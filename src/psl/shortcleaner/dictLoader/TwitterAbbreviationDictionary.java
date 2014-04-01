@@ -24,6 +24,7 @@ public class TwitterAbbreviationDictionary implements Dictionary {
 	private void loadProperties()
 	{
 		try {
+//			input = getClass().getResourceAsStream("/properties/dictionary.properties");
 			input = new FileInputStream("properties/dictionary.properties");
 			prop.load(input);
 		} catch (IOException e) {
