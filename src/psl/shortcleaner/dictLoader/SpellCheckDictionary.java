@@ -11,24 +11,28 @@ import org.dts.spell.dictionary.OpenOfficeSpellDictionary;
 import org.dts.spell.dictionary.SpellDictionary;
 import org.dts.spell.finder.Word;
 
+import psl.shortcleaner.utils.PropertiesInormation;
 import psl.shortcleaner.utils.QGram;
 
 public class SpellCheckDictionary implements Dictionary{
 
 	private static SpellDictionary dict = null;
+	private static SpellChecker checker;
 	private void loadSpellCheckDictionary()
 	{
 		try {
-			dict = new OpenOfficeSpellDictionary(new ZipFile("Dictionaries/en_us.oxt"));
+			
+			dict = new OpenOfficeSpellDictionary(new ZipFile(PropertiesInormation.getProperties().getProperty(this.getClass().getSimpleName())));
+			checker = new SpellChecker(dict) ; 
+			checker.setCaseSensitive(false) ;
+			for(int i=0;i<100000000;i++){}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	public String getDictionaryValue(String text) {
 		loadSpellCheckDictionary();
-		SpellChecker checker = new SpellChecker(dict) ; 
-		checker.setCaseSensitive(false) ;
-		Word badWord = checker.checkSpell(text) ;
+		Word badWord = checker.checkSpell(text.toLowerCase()) ;
 		if(badWord !=null)
 		{
 			double max=0;
@@ -48,7 +52,10 @@ public class SpellCheckDictionary implements Dictionary{
 					}
 					i++;
 				}
-				return suggestions.get(minIndex);
+				if(suggestions.size()>0)
+					return suggestions.get(minIndex);
+				else
+					return text;
 			}
 			else
 			{

@@ -16,7 +16,7 @@ public class ShortCleaner {
 	 * 
 	 * @return
 	 */
-	public String cleanEverything(String shorttext)
+	public String cleanEverything(String shorttext, boolean checkSpellings)
 	{
 		TwitterAbbreviationDictionary tad = new TwitterAbbreviationDictionary();
 		SpellCheckDictionary scd = new SpellCheckDictionary();
@@ -35,13 +35,16 @@ public class ShortCleaner {
 		/*
 		 * Some problem in the spelling checker so avoiding this right now
 		 */
-//		b = SimpleTokenizer.tokenize(a);
-//		for (int i=0;i<b.length;i++) {
-//			System.out.println(b[i]);
-//			b[i]=scd.getDictionaryValue(b[i]);
-//		}
+		if(checkSpellings)
+		{
+			b = SimpleTokenizer.tokenize(a);
+			for (int i=0;i<b.length;i++) {
+				b[i]=scd.getDictionaryValue(b[i]);
+			}
+			a = StringUtils.join(b," ");
+		}
 		return a;
-		//eturn StringUtils.join(b," ");
+
 	}
 	private String cleanAnythingElseThanCharachters(String textToClean)
 	{

@@ -6,14 +6,13 @@ package psl.shortcleaner.dictLoader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Properties;
 
+import psl.shortcleaner.utils.PropertiesInormation;
 import psl.shortcleaner.utils.SimpleDictionaryLoader;
 
 public class TwitterAbbreviationDictionary implements Dictionary {
 
 	
-	private Properties prop = new Properties();
 	private static SimpleDictionaryLoader twitterDictonary = null;
 	private InputStream input = null;
 	 
@@ -21,16 +20,7 @@ public class TwitterAbbreviationDictionary implements Dictionary {
 	public TwitterAbbreviationDictionary() {
 	}
 
-	private void loadProperties()
-	{
-		try {
-//			input = getClass().getResourceAsStream("/properties/dictionary.properties");
-			input = new FileInputStream("properties/dictionary.properties");
-			prop.load(input);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+	
 	private void loadDictionary(String dictionaryPath)
 	{
 		try {
@@ -44,8 +34,7 @@ public class TwitterAbbreviationDictionary implements Dictionary {
 	public String getDictionaryValue(String text) {
 		if(twitterDictonary == null)
 		{
-			loadProperties();
-			String dictionaryPath = prop.getProperty(this.getClass().getSimpleName());
+			String dictionaryPath = PropertiesInormation.getProperties().getProperty(this.getClass().getSimpleName());
 			loadDictionary(dictionaryPath);
 		}
 		String dictValue = twitterDictonary.getDictionaryValue(text.toLowerCase());
