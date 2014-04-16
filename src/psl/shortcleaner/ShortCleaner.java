@@ -23,7 +23,7 @@ public class ShortCleaner {
 		String a = shorttext;
 		a = cleanCamelCasing(a);
 		a = cleanRepeatingText(a);
-		a = cleanAnythingElseThanCharachters(a);
+		a = cleanAnythingOtherThanCharachters(a);
 		
 		String b[] = SimpleTokenizer.tokenize(a);
 		
@@ -46,7 +46,7 @@ public class ShortCleaner {
 		return a;
 
 	}
-	private String cleanAnythingElseThanCharachters(String textToClean)
+	private String cleanAnythingOtherThanCharachters(String textToClean)
 	{
 		return textToClean.replaceAll("[^a-zA-Z' ]", " ");
 	}
