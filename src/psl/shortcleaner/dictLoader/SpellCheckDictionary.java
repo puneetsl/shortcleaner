@@ -1,7 +1,5 @@
 package psl.shortcleaner.dictLoader;
 
-import info.puneetsingh.fsm.TextBrew;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.zip.ZipFile;
@@ -25,14 +23,23 @@ public class SpellCheckDictionary implements Dictionary{
 			dict = new OpenOfficeSpellDictionary(new ZipFile(PropertiesInormation.getProperties().getProperty(this.getClass().getSimpleName())));
 			checker = new SpellChecker(dict) ; 
 			checker.setCaseSensitive(false) ;
-			for(int i=0;i<100000000;i++){}
+			for(int i=0;i<1000000000;i++){}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	public String getDictionaryValue(String text) {
 		loadSpellCheckDictionary();
-		Word badWord = checker.checkSpell(text.toLowerCase()) ;
+		Word badWord;
+		try{
+			badWord = checker.checkSpell(text.toLowerCase()) ;
+			for(int i=0;i<100000000;i++){}
+		}
+		catch(Exception e)
+		{
+			return text;
+		}
+		
 		if(badWord !=null)
 		{
 			double max=0;
@@ -43,8 +50,9 @@ public class SpellCheckDictionary implements Dictionary{
 				int i=0;
 				for (String sug : suggestions) {
 					double tempCmp = QGram.compare(text, sug);
-					double brewCmp = TextBrew.compareAndGiveBestScore(text, sug);
-					tempCmp =tempCmp*0.8+brewCmp*0.2;//giving weights (8:2)
+					//double brewCmp = TextBrew.compareAndGiveBestScore(text, sug);
+					//tempCmp =tempCmp*0.8+brewCmp*0.2;//giving weights (8:2)
+					
 					if(max<tempCmp)
 					{
 						max = tempCmp;
