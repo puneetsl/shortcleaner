@@ -1,9 +1,14 @@
 package psl.shortcleaner;
 
+import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import psl.shortcleaner.dictLoader.SpellCheckDictionary;
 import psl.shortcleaner.dictLoader.TwitterAbbreviationDictionary;
 import psl.shortcleaner.tokenizer.SimpleTokenizer;
 import psl.shortcleaner.utils.StringUtils;
+import psl.shortcleaner.utils.TitleExtractor;
 
 /**
  * Making this class for temporary usage just to move fast towards the tlassify-gender project
@@ -21,6 +26,17 @@ public class ShortCleaner {
 		TwitterAbbreviationDictionary tad = new TwitterAbbreviationDictionary();
 		SpellCheckDictionary scd = new SpellCheckDictionary();
 		String a = shorttext;
+		String url = getURLFromText(a);
+		String title  = "";
+		if(url!=null)
+		{
+			try {
+				title = TitleExtractor.getPageTitle(url);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		 
 		a = cleanCamelCasing(a);
 		a = cleanRepeatingText(a);
 		a = cleanAnythingOtherThanCharachters(a);
@@ -43,8 +59,22 @@ public class ShortCleaner {
 			}
 			a = StringUtils.join(b," ");
 		}
-		return a;
+		return a+" "+title;//adding title to the cleaned string
 
+	}
+	private String getURLFromText(String a) {
+		/*
+		 * This function could be used to get URLS and works most of the times, 
+		 * in case this doesn't work it would any way would not affect the final feature extraction process 
+		 */
+		Pattern p = Pattern.compile("\\b((?:https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|])",
+        Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
+		Matcher m = p.matcher(a);
+		if(m.find())
+		{
+			return m.group(1).replaceAll("[\\s\\<>]+", " ").trim();
+		}
+		return null;
 	}
 	private String cleanAnythingOtherThanCharachters(String textToClean)
 	{
