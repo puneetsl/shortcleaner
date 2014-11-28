@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import psl.shortcleaner.bean.CleanTextBean;
 import psl.shortcleaner.dictLoader.SpellCheckDictionary;
 import psl.shortcleaner.dictLoader.TwitterAbbreviationDictionary;
 import psl.shortcleaner.tokenizer.SimpleTokenizer;
+import psl.shortcleaner.utils.CleanTextFeatureFiller;
 import psl.shortcleaner.utils.StringUtils;
 import psl.shortcleaner.utils.TitleExtractor;
 
@@ -21,11 +23,13 @@ public class ShortCleaner {
 	 * 
 	 * @return
 	 */
-	public String cleanEverything(String shorttext, boolean checkSpellings)
+	public CleanTextBean cleanEverything(String shorttext, boolean checkSpellings)
 	{
 		TwitterAbbreviationDictionary tad = new TwitterAbbreviationDictionary();
 		SpellCheckDictionary scd = new SpellCheckDictionary();
 		String a = shorttext;
+		CleanTextBean ctb = new CleanTextBean();
+		ctb = CleanTextFeatureFiller.fill(shorttext,ctb);
 		String url = getURLFromText(a);
 		String title  = "";
 		if(url!=null)
@@ -36,7 +40,7 @@ public class ShortCleaner {
 				e.printStackTrace();
 			}
 		}
-		 
+		a = a+" "+title;
 		a = cleanCamelCasing(a);
 		a = cleanRepeatingText(a);
 		a = cleanAnythingOtherThanCharachters(a);
@@ -59,7 +63,8 @@ public class ShortCleaner {
 			}
 			a = StringUtils.join(b," ");
 		}
-		return a+" "+title;//adding title to the cleaned string
+		ctb.setCleanText(a);
+		return ctb;//adding title to the cleaned string
 
 	}
 	private String getURLFromText(String a) {
