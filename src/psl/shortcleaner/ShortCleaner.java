@@ -13,24 +13,24 @@ import psl.shortcleaner.utils.StringUtils;
 import psl.shortcleaner.utils.TitleExtractor;
 
 /**
- * Making this class for temporary usage just to move fast towards the tlassify-gender project
- * TODO: have to clean this 
- * @author Puneet
+ * 
+ * @author Puneet Singh
  *
  */
 public class ShortCleaner {
 	/**
-	 * 
-	 * @return
+	 * @param shorttext   the text to clean
+	 * @param checkSpelling    boolean true for spelling checking
+	 * @return the {@code CleanTextBean}, filled for the consumption of further feature extractions.
 	 */
 	public CleanTextBean cleanEverything(String shorttext, boolean checkSpellings)
 	{
 		TwitterAbbreviationDictionary tad = new TwitterAbbreviationDictionary();
 		SpellCheckDictionary scd = new SpellCheckDictionary();
-		String a = shorttext;
+		String shrttext = shorttext;
 		CleanTextBean ctb = new CleanTextBean();
 		ctb = CleanTextFeatureFiller.fill(shorttext,ctb);
-		String url = getURLFromText(a);
+		String url = getURLFromText(shrttext);
 		String title  = "";
 		if(url!=null)
 		{
@@ -40,30 +40,30 @@ public class ShortCleaner {
 				e.printStackTrace();
 			}
 		}
-		a = a+" "+title;
-		a = cleanCamelCasing(a);
-		a = cleanRepeatingText(a);
-		a = cleanAnythingOtherThanCharachters(a);
+		shrttext = shrttext+" "+title;
+		shrttext = cleanCamelCasing(shrttext);
+		shrttext = cleanRepeatingText(shrttext);
+		shrttext = cleanAnythingOtherThanCharachters(shrttext);
 		
-		String b[] = SimpleTokenizer.tokenize(a);
+		String b[] = SimpleTokenizer.tokenize(shrttext);
 		
 		for (int i=0;i<b.length;i++) {
 			b[i]=tad.getDictionaryValue(b[i]);
 		}
-		a = StringUtils.join(b," ");
-		a = cleanRepeatingText(a);
+		shrttext = StringUtils.join(b," ");
+		shrttext = cleanRepeatingText(shrttext);
 		/*
 		 * Some problem in the spelling checker so avoiding this right now
 		 */
 		if(checkSpellings)
 		{
-			b = SimpleTokenizer.tokenize(a);
+			b = SimpleTokenizer.tokenize(shrttext);
 			for (int i=0;i<b.length;i++) {
 				b[i]=scd.getDictionaryValue(b[i]);
 			}
-			a = StringUtils.join(b," ");
+			shrttext = StringUtils.join(b," ");
 		}
-		ctb.setCleanText(a);
+		ctb.setCleanText(shrttext);
 		return ctb;//adding title to the cleaned string
 
 	}

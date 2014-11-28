@@ -1,5 +1,7 @@
 package psl.shortcleaner.utils;
 
+import java.util.ArrayList;
+
 public class StringUtils {
 	//join(String array,delimiter)
 	public static String join(String r[],String d)
@@ -10,5 +12,11 @@ public class StringUtils {
 		for(i=0;i<r.length-1;i++)
 			sb.append(r[i]+d);
 		return sb.toString()+r[i];
+	}
+	public ArrayList<String> getEmotiCount(String shortText)
+	{
+		ArrayList<String> emoticons = new ArrayList<String>();
+		
+		return emoticons;
 	}
 }
