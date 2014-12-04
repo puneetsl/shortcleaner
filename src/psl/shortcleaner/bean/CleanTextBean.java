@@ -1,13 +1,14 @@
 package psl.shortcleaner.bean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /*
  * This bean class is used to extract basic features from a small text such as a tweet
  * The variables in the class would be inflated by extracting text based features
  */
 public class CleanTextBean {
-	private ArrayList<String> emoticons;
+	private HashMap<String,Integer> emoticons;
 	private String url;
 	private ArrayList<String> urlWords; // will contain good words from the URL
 	private int hashTags; //number of hash tags
@@ -20,7 +21,7 @@ public class CleanTextBean {
 	private int RTcount;
 	
 	public CleanTextBean() {
-		emoticons = new ArrayList<String>();
+		emoticons = new HashMap<String,Integer>();
 		url = "";
 		urlWords = new ArrayList<String>();
 		hashTags = 0;
@@ -33,12 +34,12 @@ public class CleanTextBean {
 		RTcount = 0;
 	}
 
-	public ArrayList<String> getEmoticons() {
+	public HashMap<String,Integer> getEmoticons() {
 		return emoticons;
 	}
 
-	public void addEmoticons(String emoticon) {
-		emoticons.add(emoticon);
+	public void setEmoticons(HashMap<String,Integer> emoticons) {
+		this.emoticons = emoticons;
 	}
 
 	public String getUrl() {
