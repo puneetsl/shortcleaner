@@ -19,4 +19,7 @@ public class StringUtils {
 		
 		return emoticons;
 	}
+	public static int countOf(String input,String cSeq) {
+		return input.length() - input.replace(cSeq, "").length();
+	}
 }
