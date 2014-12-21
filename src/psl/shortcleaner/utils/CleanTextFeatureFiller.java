@@ -1,6 +1,6 @@
 package psl.shortcleaner.utils;
 
-import java.util.HashMap;
+
 
 import psl.shortcleaner.bean.CleanTextBean;
 
@@ -14,7 +14,7 @@ public class CleanTextFeatureFiller {
 		ctb.setHashTags(StringUtils.countOf(shortText, "#"));
 		ctb.setLinkCount(StringUtils.countOf(shortText, "http"));
 		ctb.setReferences(StringUtils.countOf(shortText, "@"));
-		ctb.setRTcount(shortText.substring(0,3).equals("RT ")?1:0);
+		ctb.setRTcount(shortText.startsWith("RT ")?1:0);
 		ctb.setPunctuationCount(StringUtils.countOf(shortText, ",")+StringUtils.countOf(shortText, ";")
 				+StringUtils.countOf(shortText, "?")+StringUtils.countOf(shortText, ":")
 				);

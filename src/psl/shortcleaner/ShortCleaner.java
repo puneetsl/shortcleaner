@@ -1,6 +1,5 @@
 package psl.shortcleaner;
 
-import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,7 +22,7 @@ public class ShortCleaner {
 	 * @param checkSpelling    boolean true for spelling checking
 	 * @return the {@code CleanTextBean}, filled for the consumption of further feature extractions.
 	 */
-	public CleanTextBean cleanEverything(String shorttext, boolean checkSpellings)
+	public CleanTextBean cleanEverything(String shorttext, boolean checkSpellings, boolean addTitle)
 	{
 		TwitterAbbreviationDictionary tad = new TwitterAbbreviationDictionary();
 		SpellCheckDictionary scd = new SpellCheckDictionary();
@@ -32,13 +31,9 @@ public class ShortCleaner {
 		ctb = CleanTextFeatureFiller.fill(shorttext,ctb);
 		String url = getURLFromText(shrttext);
 		String title  = "";
-		if(url!=null)
+		if(url!=null&&addTitle)
 		{
-			try {
-				title = TitleExtractor.getPageTitle(url);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+				title = TitleExtractor.getPageTitle(url);	
 		}
 		shrttext = shrttext+" "+title;
 		shrttext = cleanCamelCasing(shrttext);
