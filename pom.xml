@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2015 Puneet Singh Ludu
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>psl.tools</groupId>
+    <artifactId>shortcleaner</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <description>
+        Shortcleaner is a Java library to clean short texts used in Twitter and SMS.
+        You can use it to expand tweets to extract more features.
+    </description>
+
+    <url>https://github.com/puneetsl/shortcleaner</url>
+    <inceptionYear>2013</inceptionYear>
+
+    <organization>
+        <name>Pyrobits</name>
+        <url>http://www.puneetsingh.me/</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>puneetsl</id>
+            <name>Puneet Singh Ludu</name>
+            <email>pludu@buffalo.edu</email>
+            <organization>Pyrobits</organization>
+            <roles>
+                <role>owner</role>
+                <role>developer</role>
+            </roles>
+            <timezone>-5</timezone>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>http://github.com/google/shortcleaner/</url>
+        <connection>scm:git:git://github.com/google/shortcleaner.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/google/shortcleaner.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>http://github.com/google/shortcleaner/issues</url>
+    </issueManagement>
+
+
+</project>
